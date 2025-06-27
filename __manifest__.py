@@ -9,6 +9,9 @@
     'data':[
           'security/ir.model.access.csv',
           'views/library.xml',
+          'views/book.xml',
+          'views/author_view.xml',
+          'views/borrow_view.xml',
     ],
     'installable': True,
     'application': True,
