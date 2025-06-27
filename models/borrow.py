@@ -14,7 +14,6 @@ class LibraryBorrow(models.Model):
 
     @api.onchange('book_id', 'quantity')
     def _onchange_book_qty(self):
-        """When user selects a book or changes quantity, reduce available copies in the form."""
         if not self.book_id:
             return
         if self.quantity <= 0:
@@ -23,15 +22,11 @@ class LibraryBorrow(models.Model):
             raise ValidationError(
                 f"Only {self.book_id.numOfcopys} copies available, cannot borrow {self.quantity}."
             )
-        # Decrement in the form view (does not write to database yet)
         self.book_id.numOfcopys = self.book_id.numOfcopys - self.quantity
 
     @api.onchange('return_date')
     def _onchange_return(self):
-        """When user enters a return date, put copies back."""
         if self.return_date:
-            # Only add back if return_date is today or later
             if self.return_date < self.borrow_date:
                 raise ValidationError("Return date cannot be before borrow date.")
-            # Increment in the form view
             self.book_id.numOfcopys = self.book_id.numOfcopys + self.quantity
