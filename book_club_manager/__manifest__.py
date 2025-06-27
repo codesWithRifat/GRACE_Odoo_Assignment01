@@ -1,0 +1,21 @@
+{
+    'name': 'Book Club Manager',
+    'version': '16.0.0.0',
+    'depends': ['base', 'sale', 'product'],
+    'category': 'Community',
+    'author': 'Humayra',
+    'summary': 'Manage Book Club Members and Activities',
+    'description': 'This module helps manage a book club with members, books, reviews, and events.',
+    'data': [
+        'security/ir.model.access.csv',
+        'views/book_member_views.xml',
+        'views/book_views.xml',
+        'views/review_views.xml',
+        'views/event.xml',
+        'views/product.xml',
+        'views/sale.xml',
+    ],
+    'images': ['static/description/icon.png'],
+    'installable': True,
+    'application': True,
+}

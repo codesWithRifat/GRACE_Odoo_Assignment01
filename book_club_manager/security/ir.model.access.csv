@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_book_club_member,access.book.club.member,model_book_club_member,,1,1,1,1
+access_book_club_book,access.book.club.book,model_book_club_book,,1,1,1,1
+access_book_club_review,access.book.club.review,model_book_club_review,,1,1,1,1
+access_book_club_event,access.book.club.event,model_book_club_event,,1,1,1,1

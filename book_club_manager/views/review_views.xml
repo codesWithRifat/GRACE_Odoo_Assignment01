@@ -1,0 +1,81 @@
+<odoo>
+    <record id="view_form_book_club_review" model="ir.ui.view">
+        <field name="name">book.club.review.form</field>
+        <field name="model">book.club.review</field>
+        <field name="arch" type="xml">
+            <form string="Review">
+                <sheet>
+                    <group>
+                        <field name="full_name"/>
+                        <field name="book_id"/>
+                        <field name="review_date"/>
+                        <field name="rating"/>
+                        <field name="comments"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_book_club_review" model="ir.ui.view">
+        <field name="name">book.club.review.tree</field>
+        <field name="model">book.club.review</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="full_name"/>
+                <field name="book_id"/>
+                <field name="review_date"/>
+                <field name="rating"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_graph_book_club_review" model="ir.ui.view">
+        <field name="name">book.club.review.graph</field>
+        <field name="model">book.club.review</field>
+        <field name="arch" type="xml">
+            <graph string="Book Review Stats" type="pie">
+                <field name="book_id" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_kanban_book_club_review" model="ir.ui.view">
+        <field name="name">book.club.review.kanban</field>
+        <field name="model">book.club.review</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example">
+                <field name="full_name"/>
+                <field name="book_id"/>
+                <field name="rating"/>
+                <field name="review_date"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click card p-2">
+                            <div class="fw-bold text-primary">
+                                <field name="book_id"/>
+                            </div>
+                            <div>Reviewer: <field name="full_name"/></div>
+                            <div>Rating: <field name="rating"/></div>
+                            <div class="text-muted">
+                                <field name="review_date"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <record id="action_book_club_review" model="ir.actions.act_window">
+        <field name="name">Reviews</field>
+        <field name="res_model">book.club.review</field>
+        <field name="view_mode">tree,form,graph,kanban</field>
+    </record>
+
+    <menuitem id="book_club_review_menu" name="Reviews"
+              parent="book_club_root_menu"
+              action="action_book_club_review"/>
+</odoo>

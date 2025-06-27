@@ -1,0 +1,53 @@
+<odoo>
+    <record id="view_form_book_club_book" model="ir.ui.view">
+        <field name="name">book.club.book.form</field>
+        <field name="model">book.club.book</field>
+        <field name="arch" type="xml">
+            <form string="Book">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="author"/>
+                        <field name="published_date"/>
+                        <field name="genre"/>
+                        <field name="rating"/>
+                    </group>
+                    <notebook>
+                        <page string="Reviews">
+                            <field name="review_ids">
+                                <tree editable="bottom">
+                                    <field name="full_name"/>
+                                    <field name="review_date"/>
+                                    <field name="rating"/>
+                                    <field name="comments"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_book_club_book" model="ir.ui.view">
+        <field name="name">book.club.book.tree</field>
+        <field name="model">book.club.book</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="author"/>
+                <field name="genre"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_book_club_book" model="ir.actions.act_window">
+        <field name="name">Books</field>
+        <field name="res_model">book.club.book</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="book_club_book_menu" name="Books"
+              parent="book_club_root_menu"
+              action="action_book_club_book"/>
+</odoo>

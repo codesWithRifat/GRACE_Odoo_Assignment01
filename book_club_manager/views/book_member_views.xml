@@ -1,0 +1,76 @@
+<odoo>
+    <!-- Form View -->
+    <record id="view_form_book_club_member" model="ir.ui.view">
+        <field name="name">book.club.member.form</field>
+        <field name="model">book.club.member</field>
+        <field name="arch" type="xml">
+            <form string="Book Club Member">
+                <sheet>
+                    <group>
+                        <field name="first_name"/>
+                        <field name="last_name"/>
+                        <field name="full_name" readonly="1"/>
+                        <field name="age"/>
+                        <field name="join_date"/>
+                        <field name="gender"/>
+                        <field name="is_active"/>
+                        <field name="membership_type"/>
+                        <field name="notes"/>
+                    </group>
+                    <notebook>
+                        <page string="Events Participating">
+                            <field name="member_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="event_date"/>
+                                    <field name="location"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_tree_book_club_member" model="ir.ui.view">
+        <field name="name">book.club.member.tree</field>
+        <field name="model">book.club.member</field>
+        <field name="arch" type="xml">
+            <tree string="Book Club Member">
+                <field name="full_name"/>
+                <field name="age"/>
+                <field name="join_date"/>
+                <field name="gender"/>
+                <field name="is_active"/>
+                <field name="membership_type"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_graph_book_club_member_by_membership" model="ir.ui.view">
+        <field name="name">book.club.member.graph.membership</field>
+        <field name="model">book.club.member</field>
+        <field name="arch" type="xml">
+            <graph string="Members by Membership Type" type="pie">
+                <field name="membership_type" type="row"/>
+            </graph>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="action_book_club_member" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="res_model">book.club.member</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <!-- Menu Root -->
+    <menuitem id="book_club_root_menu" name="Book Club"/>
+
+    <!-- Menu Sub -->
+    <menuitem id="book_club_member_menu" name="Members"
+              parent="book_club_root_menu"
+              action="action_book_club_member"/>
+</odoo>

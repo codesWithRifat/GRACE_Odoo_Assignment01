@@ -1,0 +1,41 @@
+<odoo>
+    <record id="view_form_book_club_event" model="ir.ui.view">
+        <field name="name">book.club.event.form</field>
+        <field name="model">book.club.event</field>
+        <field name="arch" type="xml">
+            <form string="Event">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="event_date"/>
+                        <field name="location"/>
+                        <field name="description"/>
+                        <field name="member_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_tree_book_club_event" model="ir.ui.view">
+        <field name="name">book.club.event.tree</field>
+        <field name="model">book.club.event</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="event_date"/>
+                <field name="location"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_book_club_event" model="ir.actions.act_window">
+        <field name="name">Events</field>
+        <field name="res_model">book.club.event</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="book_club_event_menu" name="Events"
+              parent="book_club_root_menu"
+              action="action_book_club_event"/>
+</odoo>
